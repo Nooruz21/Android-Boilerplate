@@ -1,7 +1,9 @@
 package com.example.android_boilerplate.di
 
 import android.content.Context
+import com.example.data.remote.apiservices.FooApiService
 import com.example.data.remote.apiservices.SignInApiService
+import com.example.data.remote.apiservices.mock.FooApiServiceImpl
 import com.example.data.remote.apiservices.mock.SignInApiServiceImpl
 import com.example.data.remote.client.NetworkClient
 import dagger.Module
@@ -15,11 +17,11 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    @Singleton
+/*    @Singleton
     @Provides
     fun provideFooApiService(
         networkClient: NetworkClient
-    ) = networkClient.provideFooApiService()
+    ) = networkClient.provideFooApiService()*/
 
     @Singleton
     @Provides
@@ -27,5 +29,13 @@ object NetworkModule {
         @ApplicationContext context: Context
     ): SignInApiService {
         return SignInApiServiceImpl(context)
+    }
+
+    @Singleton
+    @Provides
+    fun provideFooApiService(
+        @ApplicationContext context: Context
+    ): FooApiService {
+        return FooApiServiceImpl(context)
     }
 }

@@ -92,5 +92,5 @@ dependencies {
 
     // Hilt
     implementation(Libraries.Hilt.android)
-    ksp(Libraries.Hilt.compiler)
+    kapt(Libraries.Hilt.compiler)
 }

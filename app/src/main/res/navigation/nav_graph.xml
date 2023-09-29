@@ -3,12 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fooFragment">
-
-
+    app:startDestination="@id/nav_graph">
+    <action
+        android:id="@+id/action_global_mainFlowFragment"
+        app:destination="@id/mainFlowFragment"
+        app:popUpTo="@id/nav_graph" />
+    <action
+        android:id="@+id/action_global_dialogError"
+        app:destination="@id/errorDialog" />
+    <action
+        android:id="@+id/action_global_signFlowFragment"
+        app:destination="@id/signFlowFragment"
+        app:popUpTo="@id/nav_graph" />
     <fragment
-        android:id="@+id/fooFragment"
-        android:name="com.example.android_boilerplate.presentation.ui.fragment.foo.FooFragment"
-        android:label="FooFragment"
-        tools:layout="@layout/fragment_foo"/>
+        android:id="@+id/mainFlowFragment"
+        android:name="com.example.android_boilerplate.presentation.ui.fragment.main.MainFlowFragment"
+        android:label="flow_fragment_main"
+        tools:layout="@layout/flow_fragment_main" />
+    <fragment
+        android:id="@+id/signFlowFragment"
+        android:name="com.example.android_boilerplate.presentation.ui.fragment.sign.SignFlowFragment"
+        android:label="flow_fragment_sign"
+        tools:layout="@layout/flow_fragment_sign" />
+    <dialog
+        android:id="@+id/errorDialog"
+        android:name="com.example.android_boilerplate.presentation.ui.dialog.error.ErrorDialog"
+        android:label="ErrorDialog"
+        tools:layout="@layout/dialog_error">
+        <argument
+            android:name="titleError"
+            app:argType="string" />
+        <argument
+            android:name="descError"
+            app:argType="string" />
+    </dialog>
+
 </navigation>

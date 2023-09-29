@@ -1,4 +1,4 @@
-package com.example.android_boilerplate.presentation.ui.fragment.foo
+package com.example.android_boilerplate.presentation.ui.fragment.main.foo
 
 import com.example.android_boilerplate.presentation.base.BaseViewModel
 import com.example.android_boilerplate.presentation.models.foo.FooUI

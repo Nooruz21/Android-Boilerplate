@@ -1,4 +1,4 @@
-package com.example.android_boilerplate.presentation.ui.fragment.foopaging
+package com.example.android_boilerplate.presentation.ui.fragment.main.foopaging
 
 import com.example.android_boilerplate.presentation.base.BaseViewModel
 import com.example.android_boilerplate.presentation.models.foo.toUI

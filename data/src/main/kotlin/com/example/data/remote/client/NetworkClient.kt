@@ -1,6 +1,7 @@
 package com.example.data.remote.client
 
 import com.example.data.remote.apiservices.FooApiService
+import com.example.data.remote.apiservices.SignInApiService
 import com.example.data.remote.client.interceptors.AuthorizationInterceptor
 import retrofit2.create
 import javax.inject.Inject
@@ -16,4 +17,6 @@ class NetworkClient @Inject constructor(
     )
 
     fun provideFooApiService(): FooApiService = provideRetrofit.create()
+
+    fun provideSignApiService(): SignInApiService = provideRetrofit.create()
 }

@@ -1,4 +1,4 @@
-package com.example.android_boilerplate.presentation.ui.fragment.foopaging
+package com.example.android_boilerplate.presentation.ui.fragment.main.foopaging
 
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels

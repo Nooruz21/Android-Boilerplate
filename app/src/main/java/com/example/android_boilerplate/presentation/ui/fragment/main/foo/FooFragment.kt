@@ -1,4 +1,4 @@
-package com.example.android_boilerplate.presentation.ui.fragment.foo
+package com.example.android_boilerplate.presentation.ui.fragment.main.foo
 
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
