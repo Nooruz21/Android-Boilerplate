@@ -6,7 +6,7 @@ plugins {
     id(Plugins.Navigation.safeArgs)
     // Hilt
     id(Plugins.Hilt.android)
-    // KSP
+    // Kotlin Symbol Processing
     id(Plugins.KSP.ksp)
 }
 
@@ -71,6 +71,10 @@ dependencies {
     implementation(Libraries.Core.core)
     implementation(Libraries.Core.splashscreen)
 
+    // Coil
+    implementation(Libraries.Coil.coil)
+    implementation(Libraries.Coil.svg)
+
     // Activity
     implementation(Libraries.Activity.activity)
 
@@ -80,6 +84,7 @@ dependencies {
     // Lifecycle
     implementation(Libraries.Lifecycle.viewModel)
     implementation(Libraries.Lifecycle.runtime)
+    implementation(Libraries.Lifecycle.service)
 
     // Navigation
     implementation(Libraries.Navigation.fragment)

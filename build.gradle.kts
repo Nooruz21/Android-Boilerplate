@@ -4,7 +4,7 @@ plugins {
     id(Plugins.AGP.library) version Versions.AGP apply false
     kotlin(Plugins.Kotlin.android) version Versions.kotlin apply false
 
-    // KSP
+    // Kotlin Symbol Processing
     id(Plugins.KSP.ksp) version Versions.KSP apply false
 
     // Navigation Safe Args

@@ -20,6 +20,11 @@ object Versions {
     const val okHttp = "5.0.0-alpha.11"
     const val room = "2.5.2"
     const val paging = "3.2.1"
+    const val json = "2.9.1"
+    const val circleImage = "3.1.0"
+    const val materialCalendar = "2.4.0-beta01"
+    const val ktor = "2.3.2"
+    const val coil = "2.2.2"
 }
 
 object Libraries {
@@ -61,6 +66,12 @@ object Libraries {
     object Lifecycle {
         const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
         const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
+        const val service = "androidx.lifecycle:lifecycle-service:${Versions.lifecycle}"
+    }
+
+    object Coil {
+        const val coil = "io.coil-kt:coil:${Versions.coil}"
+        const val svg = "io.coil-kt:coil-svg:${Versions.coil}"
     }
 
     object Navigation {
@@ -75,11 +86,14 @@ object Libraries {
     object Hilt {
         const val android = "com.google.dagger:hilt-android:${Versions.dagger}"
         const val compiler = "com.google.dagger:hilt-compiler:${Versions.dagger}"
+
+        const val hiltnavigation = "androidx.hilt:hilt-navigation-fragment:1.0.0"
     }
 
     object Retrofit {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
         const val converterMoshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+        const val converterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     }
 
     object Moshi {
@@ -104,6 +118,20 @@ object Libraries {
         const val common = "androidx.paging:paging-common:${Versions.paging}"
     }
 
+    object CircleImageView {
+        const val circleImage = "de.hdodenhof:circleimageview:${Versions.circleImage}"
+    }
+
+    object MaterialCalendarView {
+        const val materialCalendar = "com.kizitonwose.calendar:view:${Versions.materialCalendar}"
+    }
+
+    object Ktor {
+        const val core = "io.ktor:ktor-client-core:${Versions.ktor}"
+        const val cio = "io.ktor:ktor-client-cio:${Versions.ktor}"
+        const val websockets = "io.ktor:ktor-client-websockets:${Versions.ktor}"
+        const val logging = "io.ktor:ktor-client-logging:${Versions.ktor}"
+    }
 }
 
 object Plugins {

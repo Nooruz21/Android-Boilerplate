@@ -2,7 +2,7 @@ plugins {
     id(Plugins.AGP.library)
     kotlin(Plugins.Kotlin.android)
 
-    // KSP
+    // Kotlin Symbol Processing
     id(Plugins.KSP.ksp)
 
 }
@@ -51,8 +51,7 @@ dependencies {
 
     // Retrofit
     implementation(Libraries.Retrofit.retrofit)
-    implementation(Libraries.Retrofit.converterMoshi)
-
+    implementation(Libraries.Retrofit.converterGson)
 
     // Moshi
     implementation(Libraries.Moshi.moshi)
@@ -70,4 +69,10 @@ dependencies {
 
     // Paging
     api(Libraries.Paging.runtime)
+
+    // Ktor
+    api(Libraries.Ktor.core)
+    api(Libraries.Ktor.cio)
+    api(Libraries.Ktor.websockets)
+    api(Libraries.Ktor.logging)
 }

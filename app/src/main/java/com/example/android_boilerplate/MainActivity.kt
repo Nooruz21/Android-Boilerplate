@@ -2,6 +2,7 @@ package com.example.android_boilerplate
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.nooruz.boilerplate.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
