@@ -1,6 +1,13 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    id(Plugins.AGP.application)
+    kotlin(Plugins.Kotlin.android)
+    kotlin(Plugins.Kotlin.kapt)
+    // Navigation Safe Args
+    id(Plugins.Navigation.safeArgs)
+    // Hilt
+    id(Plugins.Hilt.android)
+    // KSP
+    id(Plugins.KSP.ksp)
 }
 
 android {
@@ -19,29 +26,66 @@ android {
 
     buildTypes {
         getByName(AndroidConfig.release) {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
+        getByName(AndroidConfig.debug) {
+            applicationIdSuffix = ".${AndroidConfig.debug}"
+            isDebuggable = true
+        }
     }
+
     compileOptions {
         sourceCompatibility = Options.compileOptions
         targetCompatibility = Options.compileOptions
     }
+
     kotlinOptions {
         jvmTarget = Options.kotlinOptions
+    }
+
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
     }
 }
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(project(":data"))
+    implementation(project(":domain"))
+
+    // Kotlin
+    implementation(Libraries.Coroutines.android)
+
+    // UI Components
+    implementation(Libraries.UIComponents.material)
+    implementation(Libraries.UIComponents.constraintLayout)
+    implementation(Libraries.UIComponents.viewBindingDelegate)
+
+    // Core
+    implementation(Libraries.Core.core)
+    implementation(Libraries.Core.splashscreen)
+
+    // Activity
+    implementation(Libraries.Activity.activity)
+
+    // Fragment
+    implementation(Libraries.Fragment.fragment)
+
+    // Lifecycle
+    implementation(Libraries.Lifecycle.viewModel)
+    implementation(Libraries.Lifecycle.runtime)
+
+    // Navigation
+    implementation(Libraries.Navigation.fragment)
+    implementation(Libraries.Navigation.ui)
+
+    // Hilt
+    implementation(Libraries.Hilt.android)
+    ksp(Libraries.Hilt.compiler)
 }

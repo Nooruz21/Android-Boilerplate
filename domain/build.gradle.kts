@@ -1,9 +1,20 @@
 plugins {
-    id("java-library")
-    id("org.jetbrains.kotlin.jvm")
+    kotlin(Plugins.Kotlin.jvm)
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+    sourceCompatibility = Options.compileOptions
+    targetCompatibility = Options.compileOptions
+}
+
+dependencies {
+
+    // Javax Inject
+    api(Libraries.Javax.inject)
+
+    // Kotlin
+    api(Libraries.Coroutines.core)
+
+    // Paging
+    implementation(Libraries.Paging.common)
 }

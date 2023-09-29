@@ -1,43 +1,73 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id(Plugins.AGP.library)
+    kotlin(Plugins.Kotlin.android)
+
+    // KSP
+    id(Plugins.KSP.ksp)
+
 }
 
 android {
-    namespace = "com.example.data"
-    compileSdk = 33
+    namespace = Namespaces.data
+
+    compileSdk = AndroidConfig.compileSdk
 
     defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
+        minSdk = AndroidConfig.minSdk
     }
 
     buildTypes {
-        release {
-            isMinifyEnabled = false
+        getByName(AndroidConfig.release) {
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "BASE_URL", "\"https://boilerplate.com/\"")
+        }
+
+        getByName(AndroidConfig.debug) {
+            buildConfigField("String", "BASE_URL", "\"https://dev.boilerplate.com/\"")
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = Options.compileOptions
+        targetCompatibility = Options.compileOptions
     }
+
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Options.kotlinOptions
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 }
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(project(":domain"))
+
+    // Retrofit
+    implementation(Libraries.Retrofit.retrofit)
+    implementation(Libraries.Retrofit.converterMoshi)
+
+
+    // Moshi
+    implementation(Libraries.Moshi.moshi)
+    implementation(Libraries.Moshi.kotlin)
+
+    // OkHttp
+    implementation(Libraries.OkHttp.bom)
+    implementation(Libraries.OkHttp.okHttp)
+    implementation(Libraries.OkHttp.loggingInterceptor)
+
+    // Room
+    api(Libraries.Room.runtime)
+    ksp(Libraries.Room.compiler)
+    implementation(Libraries.Room.ktx)
+
+    // Paging
+    api(Libraries.Paging.runtime)
 }

@@ -8,6 +8,8 @@ object Versions {
     const val viewBindingDelegate = "1.5.9"
     const val core = "1.10.1"
     const val splashScreen = "1.0.1"
+    const val hiltNavGraphViewModels = "1.0.0"
+    const val dotsIndicator = "4.3"
     const val activity = "1.7.2"
     const val fragment = "1.6.1"
     const val lifecycle = "2.6.2"
@@ -21,6 +23,7 @@ object Versions {
 }
 
 object Libraries {
+
     object Coroutines {
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${
             Versions.coroutines
