@@ -67,6 +67,28 @@ abstract class BaseRepository {
     ): Flow<Either<NetworkError, Unit>> = doNetworkRequest(request) {
         Either.Right(Unit)
     }
+
+    /**
+     * Do network request
+     *
+     * @return result in [flow] with [Either]
+     */
+    protected fun <T : DataMapper<S>, S> doNetworkRequest(
+        request: suspend () -> Response<T>
+    ) = flow<Either<NetworkError, S>> {
+        request().let {
+            if (it.isSuccessful && it.body() != null) {
+                emit(Either.Right(it.body()!!.mapToDomain()))
+            } else {
+                emit(Either.Left(NetworkError.Api(it.errorBody().toApiError())))
+            }
+        }
+    }.flowOn(Dispatchers.IO).catch { exception ->
+        emit(
+            Either.Left(NetworkError.Unexpected(exception.localizedMessage ?: "Error Occurred!"))
+        )
+    }
+
     /**
      * Base function for do network requests
      *
